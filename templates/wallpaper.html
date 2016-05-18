@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Renzo Rodrigues Santos">
+		<link rel="icon" href="../../favicon.ico">
+
+		<title>WebScript SDK</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="static/css/bootstrap.min.css">
+		<link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
+
+		<!-- Meus arquivos JS e CSS -->
+		<script type="text/javascript" src="static/js/funcoes.js"></script>
+		<link rel="stylesheet" href="static/css/estilos.css">
+	</head>
+
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand">WebScript SDK</a>
+				</div>
+			</div>
+		</nav>
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<div class="container">
+				<h2>Selecione a imagem para troca de Wallpaper</h2>
+				<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+					<input type=file name=photo multiple><br >
+					<table>
+						<div class="checkbox">
+							<label><input type="checkbox" id="selectall" checked>Selecionar todos</label>
+						</div>
+						<ul class="list-group">
+						{% for root, dirs, files in destination %}
+							{% for name in dirs %}
+								<ul>
+									<div class="checkbox">
+										<label><input class="checkbox1" type="checkbox" value="{{ root+'/'+name }}" name="check" checked>{{ name }}</label>
+									</div>
+								</ul>
+							{% endfor %}
+						{% endfor %}
+						</ul>
+					</table>
+					<button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
+				</form>
+			</div>
+		</div>
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row">
+			</div>
+			<hr>
+			<footer>
+				<p>&copy; 2016 Renzo Rodrigues</p>
+			</footer>
+		</div> <!-- /container -->
+
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="static/js/jquery.min.js"></script>
+		<script src="static/js/bootstrap.min.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+	</body>
+</html>
